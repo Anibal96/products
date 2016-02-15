@@ -66,5 +66,10 @@ public class StockManager
      */
     public void printProductDetails()
     {
+        for(Product producto : stock){
+            //La clase producto al contener el método toString no es necesario hacer referencia a este para
+            //imprimir los productos (Java lo hace por defecto)
+            System.out.println(producto);
+        }
     }
 }
