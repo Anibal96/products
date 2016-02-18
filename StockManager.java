@@ -37,20 +37,13 @@ public class StockManager
      */
     public void delivery(int id, int amount)
     {
-        boolean productoEncontrado = false;
-        int cont = 0;
-        while (stock.size() > cont && !productoEncontrado){
-            if (stock.get(cont).getID() == id){
-                stock.get(cont).increaseQuantity(amount);
-                productoEncontrado = true;
-            }
-            cont++;
-        }
-        if (!productoEncontrado){
-            System.out.println("No hay producto con esa id.");
+        Product producto = findProduct(id);
+        if (producto == null){
+            System.out.println("Error la id introducida no coincide con ningun producto");
         }
         else{
-            System.out.println("Se ha incrementado la cantidad del producto de forma correcta.");
+            producto.increaseQuantity(amount);
+            System.out.println("Se a introduccido la cantidad asignada de ese producto al stock");
         }
     }
 
@@ -81,15 +74,7 @@ public class StockManager
      */
     public int numberInStock(int id)
     {
-        int numeroEnStock = 0;
-        int cont = 0;
-        while (stock.size() > cont && numeroEnStock == 0){
-            if (stock.get(cont).getID() == id){
-                numeroEnStock = stock.get(cont).getQuantity();
-            }
-            cont++;
-        }
-        return numeroEnStock;
+        return findProduct(id).getQuantity();
     }
 
     /**
