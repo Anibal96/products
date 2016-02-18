@@ -46,6 +46,12 @@ public class StockManager
             }
             cont++;
         }
+        if (!productoEncontrado){
+            System.out.println("No hay producto con esa id.");
+        }
+        else{
+            System.out.println("Se ha incrementado la cantidad del producto de forma correcta.");
+        }
     }
 
     /**
