@@ -74,7 +74,12 @@ public class StockManager
      */
     public int numberInStock(int id)
     {
-        return findProduct(id).getQuantity();
+        int cantidad = 0;
+        Product producto = findProduct(id); 
+        if (producto != null) {
+            cantidad = producto.getQuantity();
+        }
+        return cantidad;
     }
 
     /**
@@ -86,6 +91,18 @@ public class StockManager
             //La clase producto al contener el método toString no es necesario hacer referencia a este para
             //imprimir los productos (Java lo hace por defecto)
             System.out.println(producto);
+        }
+    }
+
+    /**
+     * Método que imprime los detalles de todos los productos cuyo stock está por debajo de un determinado número
+     */
+    public void underGivenNumberInStock(int cantidad)
+    {
+        for(Product producto : stock){
+            if (producto.getQuantity() < cantidad){
+                System.out.println(producto);
+            }
         }
     }
 }
