@@ -107,4 +107,19 @@ public class StockManager
             }
         }
     }
+    
+    /**
+     * Método que busca un producto por su nombre.
+     */
+    public Product findProduct(String name){
+        Product productoId = null;
+        int cont = 0;
+        while (stock.size() > cont && productoId == null){
+            if (stock.get(cont).getName().equals(name)){
+                productoId = stock.get(cont);
+            }
+            cont++;
+        }
+        return productoId;
+    }
 }
